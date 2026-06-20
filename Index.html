@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קלפי ניצן - רכישה מבוקרת</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #ff6b8b, #ff8e53);
+            --text-dark: #2c3e50;
+            --primary: #ff6b8b;
+            --secondary: #ff8e53;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #fdfbf7;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            padding: 30px 25px;
+            text-align: center;
+            border: 3px solid #ff8e53;
+        }
+
+        .logo {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px auto;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 6px 15px rgba(255, 107, 139, 0.2);
+            display: block;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #1a252f;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #556677;
+            margin-bottom: 25px;
+            text-align: justify;
+            background: #fff9f5;
+            padding: 15px;
+            border-radius: 14px;
+            border-right: 4px solid var(--secondary);
+        }
+
+        .step {
+            display: none;
+            text-align: right;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f5ede6;
+            padding-bottom: 8px;
+            color: #1a252f;
+        }
+
+        .product-box {
+            background: #fdfbf7;
+            border: 1px dashed var(--secondary);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+            background: #fff;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background: var(--bg-gradient);
+            color: white;
+        }
+
+        .btn-submit {
+            background: #2c3e50;
+            color: white;
+            margin-top: 12px;
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.2);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+            margin-top: 12px;
+        }
+
+        .summary-box {
+            background: #fdfbf7;
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            font-size: 15px;
+            line-height: 2;
+        }
+
+        .success-box {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .success-icon {
+            font-size: 50px;
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+
+        #pickupGroup {
+            background: #fff9f5;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--secondary);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form id="orderForm" action="https://formspree.io/f/XXXXXX" method="POST" onsubmit="handleFormSubmit(event)">
+        <input type="hidden" name="_to" value="nitzan.cards@gmail.com">
+        
+        <div class="card">
+            <img src="logo.jpg" alt="קלפי ניצן" class="logo" onerror="this.style.display='none'">
+            
+            <h1>קלפי ניצן</h1>
+            <div class="subtitle">ניצן כרק, פותחת דלתות להזדמנויות חדשות</div>
+
+            <div class="intro-text">
+                חפיסת "קלפי ניצן", 72 הקלפים נוצרה עבורך, ככלי להתבוננות, חיבור והעמקה. כל קלף הוא שער המזמין אותך לעצור, להקשיב ולגלות בתוכך משהו חדש. מלווה א.נשים במסע, בשילוב ייחודי של ע"ב השמות, מעגל הצבעים האינדיאני, ועבודה עם תדרים.
+            </div>
+
+            <!-- שלב 1 -->
+            <div id="step1" class="step active">
+                <div class="step-title">1. פרטי משלוח ויצירת קשר</div>
+                <div class="product-box">
+                    <div style="text-align: right;">
+                        <strong>ערכת "קלפי ניצן" המלאה</strong><br>
+                        <small style="color: #666;">72 קלפים, צפנים וערכים</small>
+                    </div>
+                    <div style="font-size: 18px; font-weight: bold; color: var(--primary);">₪98</div>
+                </div>
+
+                <div class="form-group">
+                    <label>שם מלא *</label>
+                    <input type="text" id="fullName" name="שם מלא" required>
+                </div>
+                <div class="form-group">
+                    <label>מספר טלפון *</label>
+                    <input type="tel" id="phone" name="טלפון" required>
+                </div>
+                <div class="form-group">
+                    <label>כתובת מלאה למשלוח *</label>
+                    <input type="text" id="address" name="כתובת למשלוח" required>
+                </div>
+                <div class="form-group">
+                    <label>שיטת משלוח *</label>
+                    <select id="shipping" name="שיטת משלוח" onchange="updateTotal()">
+                        <option value="0">איסוף בתיאום (חינם)</option>
+                        <option value="35">משלוח עד הבית (₪35)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="pickupGroup">
+                    <label>בחרו נקודת איסוף בתיאום*</label>
+                    <select id="pickupLocation" name="נקודת איסוף בתיאום">
+                        <option value="מודיעין">מודיעין</option>
+                        <option value="ירושלים">ירושלים</option>
+                        <option value="תל אביב">תל אביב</option>
+                        <option value="עין גדי">עין גדי</option>
+                        <option value="נהריה">נהריה</option>
+                    </select>
+                </div>
+
+                <input type="hidden" id="hiddenTotal" name="סה כ לתשלום" value="₪98">
+
+                <button type="button" class="btn btn-primary" onclick="goToStep2()">המשך לסיכום</button>
+            </div>
+
+            <!-- שלב 2 (הפרדה מוחלטת בין משלוח לאיסוף) -->
+            <div id="step2" class="step">
+                <div class="step-title">2. אישור וביצוע ההזמנה</div>
+                <div class="summary-box">
+                    <div>ערכת קלפי ניצן: ₪98</div>
+                    
+                    <!-- שורת משלוח - תוצג רק אם נבחר משלוח -->
+                    <div id="summaryShippingRow" style="display: none;">משלוח עד הבית: ₪35</div>
+                    
+                    <!-- שורת איסוף עצמי - תוצג רק אם נבחר איסוף -->
+                    <div id="summaryPickupRow" style="display: block;">
+                        <div>איסוף בתיאום (חינם)</div>
+                        <div id="summaryPickupLocation" style="font-size: 14px; color: #666;">נקודת איסוף: מודיעין</div>
+                    </div>
+                    
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin: 10px 0;">
+                    <div id="summaryTotal" style="font-size: 18px; font-weight: bold; color: var(--primary);">סה"כ לתשלום: ₪98</div>
+                </div>
+
+                <p style="font-size: 14px; margin-bottom: 15px; color: #556677; text-align: right;">
+                    בלחיצה על הכפתור מטה, פרטי ההזמנה יישלחו ישירות לניצן. ניצן תבדוק את ההזמנה ותיצור איתך קשר בהקדם לתיאום התשלום (בביט/פייבוקס) והמשלוח.
+                </p>
+                
+                <button type="submit" class="btn btn-submit">✉️ שלח הזמנה לבדיקה ואישור</button>
+                <button type="button" class="btn btn-secondary" onclick="goToStep1()">חזרה לשלב הקודם</button>
+            </div>
+
+            <!-- שלב 3 -->
+            <div id="step3" class="step">
+                <div class="success-box">
+                    <div class="success-icon">✓</div>
+                    <h2>ההזמנה נשלחה בהצלחה!</h2>
+                    <br>
+                    <p id="successMessage" style="line-height: 1.6; color: #556677;"></p>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<script>
+    const basePrice = 98;
+
+    function updateTotal() {
+        let shippingCost = parseInt(document.getElementById('shipping').value);
+        let total = basePrice + shippingCost;
+        
+        let pickupGroup = document.getElementById('pickupGroup');
+        let pickupLocationSelect = document.getElementById('pickupLocation');
+        
+        let summaryShippingRow = document.getElementById('summaryShippingRow');
+        let summaryPickupRow = document.getElementById('summaryPickupRow');
+        let summaryPickupLocation = document.getElementById('summaryPickupLocation');
+
+        if (shippingCost === 0) {
+            // מצב איסוף בתיאום
+            pickupGroup.style.display = 'block';
+            pickupLocationSelect.disabled = false; // השדה יישלח במייל
+            
+            summaryPickupRow.style.display = 'block'; // מציג את פרטי האיסוף בשלב 2
+            summaryShippingRow.style.display = 'none'; // מחביא לחלוטין את שורת ה-35 ש"ח
+            summaryPickupLocation.innerText = `נקודת איסוף: ${pickupLocationSelect.value}`;
+        } else {
+            // מצב משלוח עד הבית
+            pickupGroup.style.display = 'none';
+            pickupLocationSelect.disabled = true; // חוסם את השדה כדי שלא יישלח מידע מיותר למייל
+            
+            summaryPickupRow.style.display = 'none'; // מחביא לחלוטין את כל מה שקשור לאיסוף בשלב 2!
+            summaryShippingRow.style.display = 'block'; // מציג רק "משלוח עד הבית: ₪35"
+        }
+
+        document.getElementById('summaryTotal').innerText = `סה"כ לתשלום: ₪${total}`;
+        document.getElementById('hiddenTotal').value = `₪${total}`;
+    }
+
+    document.getElementById('pickupLocation').addEventListener('change', function() {
+        document.getElementById('summaryPickupLocation').innerText = `נקודת איסוף: ${this.value}`;
+    });
+
+    function goToStep2() {
+        let name = document.getElementById('fullName').value;
+        let phone = document.getElementById('phone').value;
+        let address = document.getElementById('address').value;
+
+        if(!name || !phone || !address) {
+            alert('אנא מלאו את כל שדות החובה לפני ההמשך');
+            return;
+        }
+        
+        document.getElementById('step1').classList.remove('active');
+        document.getElementById('step2').classList.add('active');
+    }
+
+    function goToStep1() {
+        document.getElementById('step2').classList.remove('active');
+        document.getElementById('step1').classList.add('active');
+    }
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        
+        let form = document.getElementById('orderForm');
+        let name = document.getElementById('fullName').value;
+        
+        fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                document.getElementById('successMessage').innerHTML = `תודה רבה, <strong>${name}</strong>.<br><br>פרטי ההזמנה נשלחו ישירות לניצן לתיבת המייל.<br>ניצן תעבור על הפרטים ותיצור איתך קשר בהקדם בנייד לביצוע התשלום והשלמת הרכישה.`;
+                document.getElementById('step2').classList.remove('active');
+                document.getElementById('step3').classList.add('active');
+            } else {
+                alert('אופס! היתה בעיה בשליחת הטופס. אנא נסו שנית.');
+            }
+        }).catch(error => {
+            alert('אופס! היתה בעיה בתקשורת. אנא נסו שנית.');
+        });
+    }
+
+    // הפעלה ראשונית לסנכרון
+    updateTotal();
+</script>
+
+</body>
+</html>
