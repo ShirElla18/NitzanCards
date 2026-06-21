@@ -236,6 +236,10 @@
                     <input type="tel" id="phone" name="טלפון" required>
                 </div>
                 <div class="form-group">
+                    <label>כתובת אימייל *</label>
+                    <input type="email" id="email" name="אימייל" required>
+                </div>
+                <div class="form-group">
                     <label>כתובת מלאה למשלוח *</label>
                     <input type="text" id="address" name="כתובת למשלוח" required>
                 </div>
@@ -344,18 +348,26 @@
     });
 
     function goToStep2() {
-        let name = document.getElementById('fullName').value;
-        let phone = document.getElementById('phone').value;
-        let address = document.getElementById('address').value;
+    let name = document.getElementById('fullName').value;
+    let phone = document.getElementById('phone').value;
+    let address = document.getElementById('address').value;
+    let email = document.getElementById('email').value; // השדה החדש
 
-        if(!name || !phone || !address) {
-            alert('אנא מלאו את כל שדות החובה לפני ההמשך');
-            return;
-        }
-        
-        document.getElementById('step1').classList.remove('active');
-        document.getElementById('step2').classList.add('active');
+    // הוספנו את המשתנה email לבדיקה
+    if(!name || !phone || !address || !email) {
+        alert('אנא מלאו את כל שדות החובה לפני ההמשך');
+        return;
     }
+    
+    // בדיקה בסיסית שהמייל מכיל תווים תקינים
+    if(!email.includes('@') || !email.includes('.')) {
+        alert('אנא הזינו כתובת אימייל תקינה');
+        return;
+    }
+    
+    document.getElementById('step1').classList.remove('active');
+    document.getElementById('step2').classList.add('active');
+}
 
     function goToStep1() {
         document.getElementById('step2').classList.remove('active');
